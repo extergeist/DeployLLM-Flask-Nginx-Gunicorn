@@ -1,0 +1,11 @@
+[Unit]
+Description=Gunicorn instance to serve Flask
+After=network.target
+[Service]
+User=jordanromano
+Group=www-data
+WorkingDirectory=/home/jordanromano/pythonapp/pythonapp/gpt4all
+Environment="PATH=/home/jordanromano/jordanenv/bin"
+ExecStart=/home/jordanromano/jordanenv/bin/gunicorn --bind 0.0.0.0:5000 wsgi:app
+[Install]
+WantedBy=multi-user.target
